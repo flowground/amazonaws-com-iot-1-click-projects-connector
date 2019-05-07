@@ -1,0 +1,3950 @@
+{
+    "openapi": "3.0.0",
+    "servers": [
+        {
+            "url": "https://projects.iot1click.amazonaws.com/"
+        },
+        {
+            "url": "http://projects.iot1click.amazonaws.com/"
+        }
+    ],
+    "x-hasEquivalentPaths": true,
+    "info": {
+        "contact": {
+            "email": "mike.ralphson@gmail.com",
+            "name": "Mike Ralphson",
+            "url": "https://github.com/mermade/aws2openapi",
+            "x-twitter": "PermittedSoc"
+        },
+        "description": "The AWS IoT 1-Click Project API Reference",
+        "license": {
+            "name": "Apache 2.0 License",
+            "url": "http://www.apache.org/licenses/"
+        },
+        "termsOfService": "https://aws.amazon.com/service-terms/",
+        "title": "AWS IoT 1-Click Projects Service",
+        "version": "2018-05-14",
+        "x-apiClientRegistration": {
+            "url": "https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct"
+        },
+        "x-apisguru-categories": [
+            "cloud"
+        ],
+        "x-logo": {
+            "backgroundColor": "#FFFFFF",
+            "url": "https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.jpeg"
+        },
+        "x-origin": [
+            {
+                "contentType": "application/json",
+                "converter": {
+                    "url": "https://github.com/mermade/aws2openapi",
+                    "version": "1.0.0"
+                },
+                "url": "https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/iot1click-projects-2018-05-14.normal.json",
+                "x-apisguru-direct": true
+            }
+        ],
+        "x-preferred": true,
+        "x-providerName": "amazonaws.com",
+        "x-release": "v4",
+        "x-serviceName": "iot1click-projects"
+    },
+    "externalDocs": {
+        "description": "Amazon Web Services documentation",
+        "url": "https://aws.amazon.com/iot1click/"
+    },
+    "security": [
+        {
+            "hmac": []
+        }
+    ],
+    "paths": {
+        "/projects": {
+            "get": {
+                "description": "Lists the AWS IoT 1-Click project(s) associated with your AWS account and region.",
+                "operationId": "ListProjects",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "nextToken": {
+                                            "description": "The token used to retrieve the next set of results - will be effectively empty if there are no further results.",
+                                            "maxLength": 1024,
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "projects": {
+                                            "description": "An object containing the list of projects.",
+                                            "items": {
+                                                "description": "An object providing summary information for a particular project for an associated AWS account and region.",
+                                                "properties": {
+                                                    "createdDate": {
+                                                        "description": "The date when the project was originally created, in UNIX epoch time format.",
+                                                        "format": "date-time",
+                                                        "type": "string"
+                                                    },
+                                                    "projectName": {
+                                                        "description": "The name of the project being summarized.",
+                                                        "maxLength": 128,
+                                                        "minLength": 1,
+                                                        "pattern": "^[0-9A-Za-z_-]+$",
+                                                        "type": "string"
+                                                    },
+                                                    "updatedDate": {
+                                                        "description": "The date when the project was last updated, in UNIX epoch time format. If the project was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                                                        "format": "date-time",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "projectName",
+                                                    "createdDate",
+                                                    "updatedDate"
+                                                ],
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "required": [
+                                        "projects"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            },
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "Creates an empty project with a placement template. A project contains zero or more placements that adhere to the placement template defined in the project.",
+                "operationId": "CreateProject",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {},
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "ResourceConflictException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "description": {
+                                        "description": "An optional description for the project.",
+                                        "maxLength": 500,
+                                        "minLength": 0,
+                                        "type": "string"
+                                    },
+                                    "placementTemplate": {
+                                        "description": "The schema defining the placement to be created. A placement template defines placement default attributes and device templates. You cannot add or remove device templates after the project has been created. However, you can update <code>callbackOverrides</code> for the device templates using the <code>UpdateProject</code> API.",
+                                        "properties": {
+                                            "defaultAttributes": {
+                                                "description": "The default attributes (key/value pairs) to be applied to all placements using this template.",
+                                                "items": {
+                                                    "properties": {
+                                                        "key": {
+                                                            "maxLength": 128,
+                                                            "minLength": 1,
+                                                            "type": "string"
+                                                        },
+                                                        "value": {
+                                                            "maxLength": 800,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "deviceTemplates": {
+                                                "description": "An object specifying the <a>DeviceTemplate</a> for all placements using this (<a>PlacementTemplate</a>) template.",
+                                                "items": {
+                                                    "properties": {
+                                                        "key": {
+                                                            "maxLength": 128,
+                                                            "minLength": 1,
+                                                            "pattern": "^[a-zA-Z0-9_-]+$",
+                                                            "type": "string"
+                                                        },
+                                                        "value": {
+                                                            "description": "An object representing a device for a placement template (see <a>PlacementTemplate</a>).",
+                                                            "properties": {
+                                                                "callbackOverrides": {
+                                                                    "description": "An optional Lambda function to invoke instead of the default Lambda function provided by the placement template.",
+                                                                    "items": {
+                                                                        "properties": {
+                                                                            "key": {
+                                                                                "maxLength": 128,
+                                                                                "minLength": 1,
+                                                                                "type": "string"
+                                                                            },
+                                                                            "value": {
+                                                                                "maxLength": 200,
+                                                                                "type": "string"
+                                                                            }
+                                                                        },
+                                                                        "type": "object"
+                                                                    },
+                                                                    "type": "array"
+                                                                },
+                                                                "deviceType": {
+                                                                    "description": "The device type, which currently must be <code>\"button\"</code>.",
+                                                                    "maxLength": 128,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "projectName": {
+                                        "description": "The name of the project to create.",
+                                        "maxLength": 128,
+                                        "minLength": 1,
+                                        "pattern": "^[0-9A-Za-z_-]+$",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "projectName"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/projects/{projectName}": {
+            "delete": {
+                "description": "<p>Deletes a project. To delete a project, it must not have any placements associated with it.</p> <note> <p>When you delete a project, all associated data becomes irretrievable.</p> </note>",
+                "operationId": "DeleteProject",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "projectName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {},
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "TooManyRequestsException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            },
+            "get": {
+                "description": "Returns an object describing a project.",
+                "operationId": "DescribeProject",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "projectName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "project": {
+                                            "description": "An object describing the project.",
+                                            "properties": {
+                                                "createdDate": {
+                                                    "description": "The date when the project was originally created, in UNIX epoch time format.",
+                                                    "format": "date-time",
+                                                    "type": "string"
+                                                },
+                                                "description": {
+                                                    "description": "The description of the project.",
+                                                    "maxLength": 500,
+                                                    "minLength": 0,
+                                                    "type": "string"
+                                                },
+                                                "placementTemplate": {
+                                                    "description": "An object describing the project's placement specifications.",
+                                                    "properties": {
+                                                        "defaultAttributes": {
+                                                            "description": "The default attributes (key/value pairs) to be applied to all placements using this template.",
+                                                            "items": {
+                                                                "properties": {
+                                                                    "key": {
+                                                                        "maxLength": 128,
+                                                                        "minLength": 1,
+                                                                        "type": "string"
+                                                                    },
+                                                                    "value": {
+                                                                        "maxLength": 800,
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "deviceTemplates": {
+                                                            "description": "An object specifying the <a>DeviceTemplate</a> for all placements using this (<a>PlacementTemplate</a>) template.",
+                                                            "items": {
+                                                                "properties": {
+                                                                    "key": {
+                                                                        "maxLength": 128,
+                                                                        "minLength": 1,
+                                                                        "pattern": "^[a-zA-Z0-9_-]+$",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "value": {
+                                                                        "description": "An object representing a device for a placement template (see <a>PlacementTemplate</a>).",
+                                                                        "properties": {
+                                                                            "callbackOverrides": {
+                                                                                "description": "An optional Lambda function to invoke instead of the default Lambda function provided by the placement template.",
+                                                                                "items": {
+                                                                                    "properties": {
+                                                                                        "key": {
+                                                                                            "maxLength": 128,
+                                                                                            "minLength": 1,
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "value": {
+                                                                                            "maxLength": 200,
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    "type": "object"
+                                                                                },
+                                                                                "type": "array"
+                                                                            },
+                                                                            "deviceType": {
+                                                                                "description": "The device type, which currently must be <code>\"button\"</code>.",
+                                                                                "maxLength": 128,
+                                                                                "type": "string"
+                                                                            }
+                                                                        },
+                                                                        "type": "object"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "projectName": {
+                                                    "description": "The name of the project for which to obtain information from.",
+                                                    "maxLength": 128,
+                                                    "minLength": 1,
+                                                    "pattern": "^[0-9A-Za-z_-]+$",
+                                                    "type": "string"
+                                                },
+                                                "updatedDate": {
+                                                    "description": "The date when the project was last updated, in UNIX epoch time format. If the project was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                                                    "format": "date-time",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "projectName",
+                                                "createdDate",
+                                                "updatedDate"
+                                            ],
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "project"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            },
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "put": {
+                "description": "Updates a project associated with your AWS account and region. With the exception of device template names, you can pass just the values that need to be updated because the update request will change only the values that are provided. To clear a value, pass the empty string (i.e., <code>\"\"</code>).",
+                "operationId": "UpdateProject",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "projectName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {},
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "TooManyRequestsException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "description": {
+                                        "description": "An optional user-defined description for the project.",
+                                        "maxLength": 500,
+                                        "minLength": 0,
+                                        "type": "string"
+                                    },
+                                    "placementTemplate": {
+                                        "description": "An object defining the project update. Once a project has been created, you cannot add device template names to the project. However, for a given <code>placementTemplate</code>, you can update the associated <code>callbackOverrides</code> for the device definition using this API.",
+                                        "properties": {
+                                            "defaultAttributes": {
+                                                "description": "The default attributes (key/value pairs) to be applied to all placements using this template.",
+                                                "items": {
+                                                    "properties": {
+                                                        "key": {
+                                                            "maxLength": 128,
+                                                            "minLength": 1,
+                                                            "type": "string"
+                                                        },
+                                                        "value": {
+                                                            "maxLength": 800,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "deviceTemplates": {
+                                                "description": "An object specifying the <a>DeviceTemplate</a> for all placements using this (<a>PlacementTemplate</a>) template.",
+                                                "items": {
+                                                    "properties": {
+                                                        "key": {
+                                                            "maxLength": 128,
+                                                            "minLength": 1,
+                                                            "pattern": "^[a-zA-Z0-9_-]+$",
+                                                            "type": "string"
+                                                        },
+                                                        "value": {
+                                                            "description": "An object representing a device for a placement template (see <a>PlacementTemplate</a>).",
+                                                            "properties": {
+                                                                "callbackOverrides": {
+                                                                    "description": "An optional Lambda function to invoke instead of the default Lambda function provided by the placement template.",
+                                                                    "items": {
+                                                                        "properties": {
+                                                                            "key": {
+                                                                                "maxLength": 128,
+                                                                                "minLength": 1,
+                                                                                "type": "string"
+                                                                            },
+                                                                            "value": {
+                                                                                "maxLength": 200,
+                                                                                "type": "string"
+                                                                            }
+                                                                        },
+                                                                        "type": "object"
+                                                                    },
+                                                                    "type": "array"
+                                                                },
+                                                                "deviceType": {
+                                                                    "description": "The device type, which currently must be <code>\"button\"</code>.",
+                                                                    "maxLength": 128,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/projects/{projectName}/placements": {
+            "get": {
+                "description": "Lists the placement(s) of a project.",
+                "operationId": "ListPlacements",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "projectName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "nextToken": {
+                                            "description": "The token used to retrieve the next set of results - will be effectively empty if there are no further results.",
+                                            "maxLength": 1024,
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "placements": {
+                                            "description": "An object listing the requested placements.",
+                                            "items": {
+                                                "description": "An object providing summary information for a particular placement.",
+                                                "properties": {
+                                                    "createdDate": {
+                                                        "description": "The date when the placement was originally created, in UNIX epoch time format.",
+                                                        "format": "date-time",
+                                                        "type": "string"
+                                                    },
+                                                    "placementName": {
+                                                        "description": "The name of the placement being summarized.",
+                                                        "maxLength": 128,
+                                                        "minLength": 1,
+                                                        "pattern": "^[a-zA-Z0-9_-]+$",
+                                                        "type": "string"
+                                                    },
+                                                    "projectName": {
+                                                        "description": "The name of the project containing the placement.",
+                                                        "maxLength": 128,
+                                                        "minLength": 1,
+                                                        "pattern": "^[0-9A-Za-z_-]+$",
+                                                        "type": "string"
+                                                    },
+                                                    "updatedDate": {
+                                                        "description": "The date when the placement was last updated, in UNIX epoch time format. If the placement was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                                                        "format": "date-time",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "projectName",
+                                                    "placementName",
+                                                    "createdDate",
+                                                    "updatedDate"
+                                                ],
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "required": [
+                                        "placements"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            },
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "post": {
+                "description": "Creates an empty placement.",
+                "operationId": "CreatePlacement",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "projectName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {},
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "ResourceConflictException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "attributes": {
+                                        "description": "Optional user-defined key/value pairs providing contextual data (such as location or function) for the placement.",
+                                        "items": {
+                                            "properties": {
+                                                "key": {
+                                                    "maxLength": 128,
+                                                    "minLength": 1,
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "maxLength": 800,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "placementName": {
+                                        "description": "The name of the placement to be created.",
+                                        "maxLength": 128,
+                                        "minLength": 1,
+                                        "pattern": "^[a-zA-Z0-9_-]+$",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "placementName"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/projects/{projectName}/placements/{placementName}": {
+            "delete": {
+                "description": "<p>Deletes a placement. To delete a placement, it must not have any devices associated with it.</p> <note> <p>When you delete a placement, all associated data becomes irretrievable.</p> </note>",
+                "operationId": "DeletePlacement",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "projectName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "placementName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {},
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "TooManyRequestsException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            },
+            "get": {
+                "description": "Describes a placement in a project.",
+                "operationId": "DescribePlacement",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "projectName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "placementName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "placement": {
+                                            "description": "An object describing the placement.",
+                                            "properties": {
+                                                "attributes": {
+                                                    "description": "The user-defined attributes associated with the placement.",
+                                                    "items": {
+                                                        "properties": {
+                                                            "key": {
+                                                                "maxLength": 128,
+                                                                "minLength": 1,
+                                                                "type": "string"
+                                                            },
+                                                            "value": {
+                                                                "maxLength": 800,
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "type": "array"
+                                                },
+                                                "createdDate": {
+                                                    "description": "The date when the placement was initially created, in UNIX epoch time format.",
+                                                    "format": "date-time",
+                                                    "type": "string"
+                                                },
+                                                "placementName": {
+                                                    "description": "The name of the placement.",
+                                                    "maxLength": 128,
+                                                    "minLength": 1,
+                                                    "pattern": "^[a-zA-Z0-9_-]+$",
+                                                    "type": "string"
+                                                },
+                                                "projectName": {
+                                                    "description": "The name of the project containing the placement.",
+                                                    "maxLength": 128,
+                                                    "minLength": 1,
+                                                    "pattern": "^[0-9A-Za-z_-]+$",
+                                                    "type": "string"
+                                                },
+                                                "updatedDate": {
+                                                    "description": "The date when the placement was last updated, in UNIX epoch time format. If the placement was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                                                    "format": "date-time",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "projectName",
+                                                "placementName",
+                                                "attributes",
+                                                "createdDate",
+                                                "updatedDate"
+                                            ],
+                                            "type": "object"
+                                        }
+                                    },
+                                    "required": [
+                                        "placement"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            },
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "put": {
+                "description": "Updates a placement with the given attributes. To clear an attribute, pass an empty value (i.e., \"\").",
+                "operationId": "UpdatePlacement",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "projectName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "placementName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {},
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "TooManyRequestsException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "attributes": {
+                                        "description": "The user-defined object of attributes used to update the placement. The maximum number of key/value pairs is 50.",
+                                        "items": {
+                                            "properties": {
+                                                "key": {
+                                                    "maxLength": 128,
+                                                    "minLength": 1,
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "maxLength": 800,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/projects/{projectName}/placements/{placementName}/devices": {
+            "get": {
+                "description": "Returns an object enumerating the devices in a placement.",
+                "operationId": "GetDevicesInPlacement",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "projectName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "placementName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "devices": {
+                                            "description": "An object containing the devices (zero or more) within the placement.",
+                                            "items": {
+                                                "properties": {
+                                                    "key": {
+                                                        "maxLength": 128,
+                                                        "minLength": 1,
+                                                        "pattern": "^[a-zA-Z0-9_-]+$",
+                                                        "type": "string"
+                                                    },
+                                                    "value": {
+                                                        "maxLength": 32,
+                                                        "minLength": 1,
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "required": [
+                                        "devices"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            },
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ]
+        },
+        "/projects/{projectName}/placements/{placementName}/devices/{deviceTemplateName}": {
+            "delete": {
+                "description": "Removes a physical device from a placement.",
+                "operationId": "DisassociateDeviceFromPlacement",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "projectName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "placementName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "deviceTemplateName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {},
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "TooManyRequestsException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {},
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            },
+            "parameters": [
+                {
+                    "in": "query",
+                    "name": "Action",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "query",
+                    "name": "Version",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Content-Sha256",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Date",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Algorithm",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Credential",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Security-Token",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-Signature",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "in": "header",
+                    "name": "X-Amz-SignedHeaders",
+                    "required": false,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "put": {
+                "description": "Associates a physical device with a placement.",
+                "operationId": "AssociateDeviceWithPlacement",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "projectName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "placementName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "deviceTemplateName",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {},
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "480": {
+                        "description": "InternalFailureException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "481": {
+                        "description": "InvalidRequestException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "482": {
+                        "description": "ResourceConflictException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "483": {
+                        "description": "ResourceNotFoundException",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "<p/>",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "deviceId": {
+                                        "description": "The ID of the physical device to be associated with the given placement in the project. Note that a mandatory 4 character prefix is required for all <code>deviceId</code> values.",
+                                        "maxLength": 32,
+                                        "minLength": 1,
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "deviceId"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AssociateDeviceWithPlacementRequest": {
+                "properties": {
+                    "deviceId": {
+                        "description": "The ID of the physical device to be associated with the given placement in the project. Note that a mandatory 4 character prefix is required for all <code>deviceId</code> values.",
+                        "maxLength": 32,
+                        "minLength": 1,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "deviceId"
+                ],
+                "type": "object"
+            },
+            "AssociateDeviceWithPlacementResponse": {
+                "properties": {},
+                "type": "object"
+            },
+            "AttributeDefaultValue": {
+                "maxLength": 800,
+                "type": "string"
+            },
+            "AttributeName": {
+                "maxLength": 128,
+                "minLength": 1,
+                "type": "string"
+            },
+            "AttributeValue": {
+                "maxLength": 800,
+                "type": "string"
+            },
+            "Code": {
+                "type": "string"
+            },
+            "CreatePlacementRequest": {
+                "properties": {
+                    "attributes": {
+                        "description": "Optional user-defined key/value pairs providing contextual data (such as location or function) for the placement.",
+                        "items": {
+                            "properties": {
+                                "key": {
+                                    "maxLength": 128,
+                                    "minLength": 1,
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "maxLength": 800,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "placementName": {
+                        "description": "The name of the placement to be created.",
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9_-]+$",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "placementName"
+                ],
+                "type": "object"
+            },
+            "CreatePlacementResponse": {
+                "properties": {},
+                "type": "object"
+            },
+            "CreateProjectRequest": {
+                "properties": {
+                    "description": {
+                        "description": "An optional description for the project.",
+                        "maxLength": 500,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "placementTemplate": {
+                        "description": "The schema defining the placement to be created. A placement template defines placement default attributes and device templates. You cannot add or remove device templates after the project has been created. However, you can update <code>callbackOverrides</code> for the device templates using the <code>UpdateProject</code> API.",
+                        "properties": {
+                            "defaultAttributes": {
+                                "description": "The default attributes (key/value pairs) to be applied to all placements using this template.",
+                                "items": {
+                                    "properties": {
+                                        "key": {
+                                            "maxLength": 128,
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "maxLength": 800,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "deviceTemplates": {
+                                "description": "An object specifying the <a>DeviceTemplate</a> for all placements using this (<a>PlacementTemplate</a>) template.",
+                                "items": {
+                                    "properties": {
+                                        "key": {
+                                            "maxLength": 128,
+                                            "minLength": 1,
+                                            "pattern": "^[a-zA-Z0-9_-]+$",
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "description": "An object representing a device for a placement template (see <a>PlacementTemplate</a>).",
+                                            "properties": {
+                                                "callbackOverrides": {
+                                                    "description": "An optional Lambda function to invoke instead of the default Lambda function provided by the placement template.",
+                                                    "items": {
+                                                        "properties": {
+                                                            "key": {
+                                                                "maxLength": 128,
+                                                                "minLength": 1,
+                                                                "type": "string"
+                                                            },
+                                                            "value": {
+                                                                "maxLength": 200,
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "type": "array"
+                                                },
+                                                "deviceType": {
+                                                    "description": "The device type, which currently must be <code>\"button\"</code>.",
+                                                    "maxLength": 128,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "projectName": {
+                        "description": "The name of the project to create.",
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "pattern": "^[0-9A-Za-z_-]+$",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "projectName"
+                ],
+                "type": "object"
+            },
+            "CreateProjectResponse": {
+                "properties": {},
+                "type": "object"
+            },
+            "DefaultPlacementAttributeMap": {
+                "items": {
+                    "properties": {
+                        "key": {
+                            "maxLength": 128,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "value": {
+                            "maxLength": 800,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "DeletePlacementRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "DeletePlacementResponse": {
+                "properties": {},
+                "type": "object"
+            },
+            "DeleteProjectRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "DeleteProjectResponse": {
+                "properties": {},
+                "type": "object"
+            },
+            "DescribePlacementRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "DescribePlacementResponse": {
+                "properties": {
+                    "placement": {
+                        "description": "An object describing the placement.",
+                        "properties": {
+                            "attributes": {
+                                "description": "The user-defined attributes associated with the placement.",
+                                "items": {
+                                    "properties": {
+                                        "key": {
+                                            "maxLength": 128,
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "maxLength": 800,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "createdDate": {
+                                "description": "The date when the placement was initially created, in UNIX epoch time format.",
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "placementName": {
+                                "description": "The name of the placement.",
+                                "maxLength": 128,
+                                "minLength": 1,
+                                "pattern": "^[a-zA-Z0-9_-]+$",
+                                "type": "string"
+                            },
+                            "projectName": {
+                                "description": "The name of the project containing the placement.",
+                                "maxLength": 128,
+                                "minLength": 1,
+                                "pattern": "^[0-9A-Za-z_-]+$",
+                                "type": "string"
+                            },
+                            "updatedDate": {
+                                "description": "The date when the placement was last updated, in UNIX epoch time format. If the placement was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                                "format": "date-time",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "projectName",
+                            "placementName",
+                            "attributes",
+                            "createdDate",
+                            "updatedDate"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "placement"
+                ],
+                "type": "object"
+            },
+            "DescribeProjectRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "DescribeProjectResponse": {
+                "properties": {
+                    "project": {
+                        "description": "An object describing the project.",
+                        "properties": {
+                            "createdDate": {
+                                "description": "The date when the project was originally created, in UNIX epoch time format.",
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "description": {
+                                "description": "The description of the project.",
+                                "maxLength": 500,
+                                "minLength": 0,
+                                "type": "string"
+                            },
+                            "placementTemplate": {
+                                "description": "An object describing the project's placement specifications.",
+                                "properties": {
+                                    "defaultAttributes": {
+                                        "description": "The default attributes (key/value pairs) to be applied to all placements using this template.",
+                                        "items": {
+                                            "properties": {
+                                                "key": {
+                                                    "maxLength": 128,
+                                                    "minLength": 1,
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "maxLength": 800,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "deviceTemplates": {
+                                        "description": "An object specifying the <a>DeviceTemplate</a> for all placements using this (<a>PlacementTemplate</a>) template.",
+                                        "items": {
+                                            "properties": {
+                                                "key": {
+                                                    "maxLength": 128,
+                                                    "minLength": 1,
+                                                    "pattern": "^[a-zA-Z0-9_-]+$",
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "description": "An object representing a device for a placement template (see <a>PlacementTemplate</a>).",
+                                                    "properties": {
+                                                        "callbackOverrides": {
+                                                            "description": "An optional Lambda function to invoke instead of the default Lambda function provided by the placement template.",
+                                                            "items": {
+                                                                "properties": {
+                                                                    "key": {
+                                                                        "maxLength": 128,
+                                                                        "minLength": 1,
+                                                                        "type": "string"
+                                                                    },
+                                                                    "value": {
+                                                                        "maxLength": 200,
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "deviceType": {
+                                                            "description": "The device type, which currently must be <code>\"button\"</code>.",
+                                                            "maxLength": 128,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "projectName": {
+                                "description": "The name of the project for which to obtain information from.",
+                                "maxLength": 128,
+                                "minLength": 1,
+                                "pattern": "^[0-9A-Za-z_-]+$",
+                                "type": "string"
+                            },
+                            "updatedDate": {
+                                "description": "The date when the project was last updated, in UNIX epoch time format. If the project was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                                "format": "date-time",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "projectName",
+                            "createdDate",
+                            "updatedDate"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "project"
+                ],
+                "type": "object"
+            },
+            "Description": {
+                "maxLength": 500,
+                "minLength": 0,
+                "type": "string"
+            },
+            "DeviceCallbackKey": {
+                "maxLength": 128,
+                "minLength": 1,
+                "type": "string"
+            },
+            "DeviceCallbackOverrideMap": {
+                "items": {
+                    "properties": {
+                        "key": {
+                            "maxLength": 128,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "value": {
+                            "maxLength": 200,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "DeviceCallbackValue": {
+                "maxLength": 200,
+                "type": "string"
+            },
+            "DeviceId": {
+                "maxLength": 32,
+                "minLength": 1,
+                "type": "string"
+            },
+            "DeviceMap": {
+                "items": {
+                    "properties": {
+                        "key": {
+                            "maxLength": 128,
+                            "minLength": 1,
+                            "pattern": "^[a-zA-Z0-9_-]+$",
+                            "type": "string"
+                        },
+                        "value": {
+                            "maxLength": 32,
+                            "minLength": 1,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "DeviceTemplate": {
+                "description": "An object representing a device for a placement template (see <a>PlacementTemplate</a>).",
+                "properties": {
+                    "callbackOverrides": {
+                        "description": "An optional Lambda function to invoke instead of the default Lambda function provided by the placement template.",
+                        "items": {
+                            "properties": {
+                                "key": {
+                                    "maxLength": 128,
+                                    "minLength": 1,
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "maxLength": 200,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "deviceType": {
+                        "description": "The device type, which currently must be <code>\"button\"</code>.",
+                        "maxLength": 128,
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "DeviceTemplateMap": {
+                "items": {
+                    "properties": {
+                        "key": {
+                            "maxLength": 128,
+                            "minLength": 1,
+                            "pattern": "^[a-zA-Z0-9_-]+$",
+                            "type": "string"
+                        },
+                        "value": {
+                            "description": "An object representing a device for a placement template (see <a>PlacementTemplate</a>).",
+                            "properties": {
+                                "callbackOverrides": {
+                                    "description": "An optional Lambda function to invoke instead of the default Lambda function provided by the placement template.",
+                                    "items": {
+                                        "properties": {
+                                            "key": {
+                                                "maxLength": 128,
+                                                "minLength": 1,
+                                                "type": "string"
+                                            },
+                                            "value": {
+                                                "maxLength": 200,
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "deviceType": {
+                                    "description": "The device type, which currently must be <code>\"button\"</code>.",
+                                    "maxLength": 128,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "DeviceTemplateName": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[a-zA-Z0-9_-]+$",
+                "type": "string"
+            },
+            "DeviceType": {
+                "maxLength": 128,
+                "type": "string"
+            },
+            "DisassociateDeviceFromPlacementRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "DisassociateDeviceFromPlacementResponse": {
+                "properties": {},
+                "type": "object"
+            },
+            "GetDevicesInPlacementRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "GetDevicesInPlacementResponse": {
+                "properties": {
+                    "devices": {
+                        "description": "An object containing the devices (zero or more) within the placement.",
+                        "items": {
+                            "properties": {
+                                "key": {
+                                    "maxLength": 128,
+                                    "minLength": 1,
+                                    "pattern": "^[a-zA-Z0-9_-]+$",
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "maxLength": 32,
+                                    "minLength": 1,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "devices"
+                ],
+                "type": "object"
+            },
+            "InternalFailureException": {
+                "description": "<p/>",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "type": "object"
+            },
+            "InvalidRequestException": {
+                "description": "<p/>",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "type": "object"
+            },
+            "ListPlacementsRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "ListPlacementsResponse": {
+                "properties": {
+                    "nextToken": {
+                        "description": "The token used to retrieve the next set of results - will be effectively empty if there are no further results.",
+                        "maxLength": 1024,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "placements": {
+                        "description": "An object listing the requested placements.",
+                        "items": {
+                            "description": "An object providing summary information for a particular placement.",
+                            "properties": {
+                                "createdDate": {
+                                    "description": "The date when the placement was originally created, in UNIX epoch time format.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                "placementName": {
+                                    "description": "The name of the placement being summarized.",
+                                    "maxLength": 128,
+                                    "minLength": 1,
+                                    "pattern": "^[a-zA-Z0-9_-]+$",
+                                    "type": "string"
+                                },
+                                "projectName": {
+                                    "description": "The name of the project containing the placement.",
+                                    "maxLength": 128,
+                                    "minLength": 1,
+                                    "pattern": "^[0-9A-Za-z_-]+$",
+                                    "type": "string"
+                                },
+                                "updatedDate": {
+                                    "description": "The date when the placement was last updated, in UNIX epoch time format. If the placement was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "projectName",
+                                "placementName",
+                                "createdDate",
+                                "updatedDate"
+                            ],
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "placements"
+                ],
+                "type": "object"
+            },
+            "ListProjectsRequest": {
+                "properties": {},
+                "type": "object"
+            },
+            "ListProjectsResponse": {
+                "properties": {
+                    "nextToken": {
+                        "description": "The token used to retrieve the next set of results - will be effectively empty if there are no further results.",
+                        "maxLength": 1024,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "projects": {
+                        "description": "An object containing the list of projects.",
+                        "items": {
+                            "description": "An object providing summary information for a particular project for an associated AWS account and region.",
+                            "properties": {
+                                "createdDate": {
+                                    "description": "The date when the project was originally created, in UNIX epoch time format.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                "projectName": {
+                                    "description": "The name of the project being summarized.",
+                                    "maxLength": 128,
+                                    "minLength": 1,
+                                    "pattern": "^[0-9A-Za-z_-]+$",
+                                    "type": "string"
+                                },
+                                "updatedDate": {
+                                    "description": "The date when the project was last updated, in UNIX epoch time format. If the project was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "projectName",
+                                "createdDate",
+                                "updatedDate"
+                            ],
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "projects"
+                ],
+                "type": "object"
+            },
+            "MaxResults": {
+                "maximum": 250,
+                "minimum": 1,
+                "type": "integer"
+            },
+            "Message": {
+                "type": "string"
+            },
+            "NextToken": {
+                "maxLength": 1024,
+                "minLength": 1,
+                "type": "string"
+            },
+            "PlacementAttributeMap": {
+                "items": {
+                    "properties": {
+                        "key": {
+                            "maxLength": 128,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "value": {
+                            "maxLength": 800,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "PlacementDescription": {
+                "description": "An object describing a project's placement.",
+                "properties": {
+                    "attributes": {
+                        "description": "The user-defined attributes associated with the placement.",
+                        "items": {
+                            "properties": {
+                                "key": {
+                                    "maxLength": 128,
+                                    "minLength": 1,
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "maxLength": 800,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "createdDate": {
+                        "description": "The date when the placement was initially created, in UNIX epoch time format.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "placementName": {
+                        "description": "The name of the placement.",
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9_-]+$",
+                        "type": "string"
+                    },
+                    "projectName": {
+                        "description": "The name of the project containing the placement.",
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "pattern": "^[0-9A-Za-z_-]+$",
+                        "type": "string"
+                    },
+                    "updatedDate": {
+                        "description": "The date when the placement was last updated, in UNIX epoch time format. If the placement was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "projectName",
+                    "placementName",
+                    "attributes",
+                    "createdDate",
+                    "updatedDate"
+                ],
+                "type": "object"
+            },
+            "PlacementName": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[a-zA-Z0-9_-]+$",
+                "type": "string"
+            },
+            "PlacementSummary": {
+                "description": "An object providing summary information for a particular placement.",
+                "properties": {
+                    "createdDate": {
+                        "description": "The date when the placement was originally created, in UNIX epoch time format.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "placementName": {
+                        "description": "The name of the placement being summarized.",
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9_-]+$",
+                        "type": "string"
+                    },
+                    "projectName": {
+                        "description": "The name of the project containing the placement.",
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "pattern": "^[0-9A-Za-z_-]+$",
+                        "type": "string"
+                    },
+                    "updatedDate": {
+                        "description": "The date when the placement was last updated, in UNIX epoch time format. If the placement was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "projectName",
+                    "placementName",
+                    "createdDate",
+                    "updatedDate"
+                ],
+                "type": "object"
+            },
+            "PlacementSummaryList": {
+                "items": {
+                    "description": "An object providing summary information for a particular placement.",
+                    "properties": {
+                        "createdDate": {
+                            "description": "The date when the placement was originally created, in UNIX epoch time format.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "placementName": {
+                            "description": "The name of the placement being summarized.",
+                            "maxLength": 128,
+                            "minLength": 1,
+                            "pattern": "^[a-zA-Z0-9_-]+$",
+                            "type": "string"
+                        },
+                        "projectName": {
+                            "description": "The name of the project containing the placement.",
+                            "maxLength": 128,
+                            "minLength": 1,
+                            "pattern": "^[0-9A-Za-z_-]+$",
+                            "type": "string"
+                        },
+                        "updatedDate": {
+                            "description": "The date when the placement was last updated, in UNIX epoch time format. If the placement was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                            "format": "date-time",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "projectName",
+                        "placementName",
+                        "createdDate",
+                        "updatedDate"
+                    ],
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "PlacementTemplate": {
+                "description": "An object defining the template for a placement.",
+                "properties": {
+                    "defaultAttributes": {
+                        "description": "The default attributes (key/value pairs) to be applied to all placements using this template.",
+                        "items": {
+                            "properties": {
+                                "key": {
+                                    "maxLength": 128,
+                                    "minLength": 1,
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "maxLength": 800,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "deviceTemplates": {
+                        "description": "An object specifying the <a>DeviceTemplate</a> for all placements using this (<a>PlacementTemplate</a>) template.",
+                        "items": {
+                            "properties": {
+                                "key": {
+                                    "maxLength": 128,
+                                    "minLength": 1,
+                                    "pattern": "^[a-zA-Z0-9_-]+$",
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "description": "An object representing a device for a placement template (see <a>PlacementTemplate</a>).",
+                                    "properties": {
+                                        "callbackOverrides": {
+                                            "description": "An optional Lambda function to invoke instead of the default Lambda function provided by the placement template.",
+                                            "items": {
+                                                "properties": {
+                                                    "key": {
+                                                        "maxLength": 128,
+                                                        "minLength": 1,
+                                                        "type": "string"
+                                                    },
+                                                    "value": {
+                                                        "maxLength": 200,
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "deviceType": {
+                                            "description": "The device type, which currently must be <code>\"button\"</code>.",
+                                            "maxLength": 128,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "ProjectDescription": {
+                "description": "An object providing detailed information for a particular project associated with an AWS account and region.",
+                "properties": {
+                    "createdDate": {
+                        "description": "The date when the project was originally created, in UNIX epoch time format.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The description of the project.",
+                        "maxLength": 500,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "placementTemplate": {
+                        "description": "An object describing the project's placement specifications.",
+                        "properties": {
+                            "defaultAttributes": {
+                                "description": "The default attributes (key/value pairs) to be applied to all placements using this template.",
+                                "items": {
+                                    "properties": {
+                                        "key": {
+                                            "maxLength": 128,
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "maxLength": 800,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "deviceTemplates": {
+                                "description": "An object specifying the <a>DeviceTemplate</a> for all placements using this (<a>PlacementTemplate</a>) template.",
+                                "items": {
+                                    "properties": {
+                                        "key": {
+                                            "maxLength": 128,
+                                            "minLength": 1,
+                                            "pattern": "^[a-zA-Z0-9_-]+$",
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "description": "An object representing a device for a placement template (see <a>PlacementTemplate</a>).",
+                                            "properties": {
+                                                "callbackOverrides": {
+                                                    "description": "An optional Lambda function to invoke instead of the default Lambda function provided by the placement template.",
+                                                    "items": {
+                                                        "properties": {
+                                                            "key": {
+                                                                "maxLength": 128,
+                                                                "minLength": 1,
+                                                                "type": "string"
+                                                            },
+                                                            "value": {
+                                                                "maxLength": 200,
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "type": "array"
+                                                },
+                                                "deviceType": {
+                                                    "description": "The device type, which currently must be <code>\"button\"</code>.",
+                                                    "maxLength": 128,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "projectName": {
+                        "description": "The name of the project for which to obtain information from.",
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "pattern": "^[0-9A-Za-z_-]+$",
+                        "type": "string"
+                    },
+                    "updatedDate": {
+                        "description": "The date when the project was last updated, in UNIX epoch time format. If the project was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "projectName",
+                    "createdDate",
+                    "updatedDate"
+                ],
+                "type": "object"
+            },
+            "ProjectName": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[0-9A-Za-z_-]+$",
+                "type": "string"
+            },
+            "ProjectSummary": {
+                "description": "An object providing summary information for a particular project for an associated AWS account and region.",
+                "properties": {
+                    "createdDate": {
+                        "description": "The date when the project was originally created, in UNIX epoch time format.",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "projectName": {
+                        "description": "The name of the project being summarized.",
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "pattern": "^[0-9A-Za-z_-]+$",
+                        "type": "string"
+                    },
+                    "updatedDate": {
+                        "description": "The date when the project was last updated, in UNIX epoch time format. If the project was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                        "format": "date-time",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "projectName",
+                    "createdDate",
+                    "updatedDate"
+                ],
+                "type": "object"
+            },
+            "ProjectSummaryList": {
+                "items": {
+                    "description": "An object providing summary information for a particular project for an associated AWS account and region.",
+                    "properties": {
+                        "createdDate": {
+                            "description": "The date when the project was originally created, in UNIX epoch time format.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "projectName": {
+                            "description": "The name of the project being summarized.",
+                            "maxLength": 128,
+                            "minLength": 1,
+                            "pattern": "^[0-9A-Za-z_-]+$",
+                            "type": "string"
+                        },
+                        "updatedDate": {
+                            "description": "The date when the project was last updated, in UNIX epoch time format. If the project was not updated, then <code>createdDate</code> and <code>updatedDate</code> are the same.",
+                            "format": "date-time",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "projectName",
+                        "createdDate",
+                        "updatedDate"
+                    ],
+                    "type": "object"
+                },
+                "type": "array"
+            },
+            "ResourceConflictException": {
+                "description": "<p/>",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "type": "object"
+            },
+            "ResourceNotFoundException": {
+                "description": "<p/>",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "type": "object"
+            },
+            "Time": {
+                "format": "date-time",
+                "type": "string"
+            },
+            "TooManyRequestsException": {
+                "description": "<p/>",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "type": "object"
+            },
+            "UpdatePlacementRequest": {
+                "properties": {
+                    "attributes": {
+                        "description": "The user-defined object of attributes used to update the placement. The maximum number of key/value pairs is 50.",
+                        "items": {
+                            "properties": {
+                                "key": {
+                                    "maxLength": 128,
+                                    "minLength": 1,
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "maxLength": 800,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdatePlacementResponse": {
+                "properties": {},
+                "type": "object"
+            },
+            "UpdateProjectRequest": {
+                "properties": {
+                    "description": {
+                        "description": "An optional user-defined description for the project.",
+                        "maxLength": 500,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "placementTemplate": {
+                        "description": "An object defining the project update. Once a project has been created, you cannot add device template names to the project. However, for a given <code>placementTemplate</code>, you can update the associated <code>callbackOverrides</code> for the device definition using this API.",
+                        "properties": {
+                            "defaultAttributes": {
+                                "description": "The default attributes (key/value pairs) to be applied to all placements using this template.",
+                                "items": {
+                                    "properties": {
+                                        "key": {
+                                            "maxLength": 128,
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "maxLength": 800,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "deviceTemplates": {
+                                "description": "An object specifying the <a>DeviceTemplate</a> for all placements using this (<a>PlacementTemplate</a>) template.",
+                                "items": {
+                                    "properties": {
+                                        "key": {
+                                            "maxLength": 128,
+                                            "minLength": 1,
+                                            "pattern": "^[a-zA-Z0-9_-]+$",
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "description": "An object representing a device for a placement template (see <a>PlacementTemplate</a>).",
+                                            "properties": {
+                                                "callbackOverrides": {
+                                                    "description": "An optional Lambda function to invoke instead of the default Lambda function provided by the placement template.",
+                                                    "items": {
+                                                        "properties": {
+                                                            "key": {
+                                                                "maxLength": 128,
+                                                                "minLength": 1,
+                                                                "type": "string"
+                                                            },
+                                                            "value": {
+                                                                "maxLength": 200,
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "type": "array"
+                                                },
+                                                "deviceType": {
+                                                    "description": "The device type, which currently must be <code>\"button\"</code>.",
+                                                    "maxLength": 128,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateProjectResponse": {
+                "properties": {},
+                "type": "object"
+            }
+        },
+        "parameters": {
+            "Action": {
+                "in": "query",
+                "name": "Action",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "Version": {
+                "in": "query",
+                "name": "Version",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Algorithm": {
+                "in": "header",
+                "name": "X-Amz-Algorithm",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Content-Sha256": {
+                "in": "header",
+                "name": "X-Amz-Content-Sha256",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Credential": {
+                "in": "header",
+                "name": "X-Amz-Credential",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Date": {
+                "in": "header",
+                "name": "X-Amz-Date",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Security-Token": {
+                "in": "header",
+                "name": "X-Amz-Security-Token",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-Signature": {
+                "in": "header",
+                "name": "X-Amz-Signature",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "X-Amz-SignedHeaders": {
+                "in": "header",
+                "name": "X-Amz-SignedHeaders",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "requestBodies": {
+            "ListProjectsBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {},
+                            "type": "object"
+                        }
+                    }
+                },
+                "required": true
+            }
+        },
+        "securitySchemes": {
+            "hmac": {
+                "description": "Amazon Signature authorization v4",
+                "in": "header",
+                "name": "Authorization",
+                "type": "apiKey",
+                "x-amazon-apigateway-authtype": "awsSigv4"
+            }
+        }
+    }
+}

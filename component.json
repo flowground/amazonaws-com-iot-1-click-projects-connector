@@ -1,0 +1,261 @@
+{
+    "title": "AWS IoT 1-Click Projects Service",
+    "description": "The AWS IoT 1-Click Project API Reference",
+    "docsUrl": "https://aws.amazon.com/iot1click/",
+    "url": "https://api.apis.guru/v2/specs/amazonaws.com/iot1click-projects/2018-05-14/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://projects.iot1click.amazonaws.com/",
+                    "http://projects.iot1click.amazonaws.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "hmac": {
+                "label": "Authorization (hmac)",
+                "viewClass": "TextFieldView",
+                "note": "Amazon Signature authorization v4"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "ListProjects": {
+            "main": "./lib/actions/ListProjects.js",
+            "title": "Lists the AWS IoT 1-Click project(s) associated with your AWS account and region.",
+            "description": "Lists the AWS IoT 1-Click project(s) associated with your AWS account and region.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListProjects.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateProject": {
+            "main": "./lib/actions/CreateProject.js",
+            "title": "Creates an empty project with a placement template. A project contains zero or more placements that adhere to the placement template defined in the project.",
+            "description": "Creates an empty project with a placement template. A project contains zero or more placements that adhere to the placement template defined in the project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteProject": {
+            "main": "./lib/actions/DeleteProject.js",
+            "title": "<p>Deletes a project. To delete a project, it must not have any placements associated with it.</p> <note> <p>When you delete a project, all associated data becomes irretrievable.</p> </note>",
+            "description": "<p>Deletes a project. To delete a project, it must not have any placements associated with it.</p> <note> <p>When you delete a project, all associated data becomes irretrievable.</p> </note>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DescribeProject": {
+            "main": "./lib/actions/DescribeProject.js",
+            "title": "Returns an object describing a project.",
+            "description": "Returns an object describing a project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DescribeProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateProject": {
+            "main": "./lib/actions/UpdateProject.js",
+            "title": "Updates a project associated with your AWS account and region. With the exception of device template names, you can pass just the values that need to be updated because the update request will change only the values that are provided. To clear a value, pass the empty string (i.e., <code>\"\"</code>).",
+            "description": "Updates a project associated with your AWS account and region. With the exception of device template names, you can pass just the values that need to be updated because the update request will change only the values that are provided. To clear a value, pass the empty string (i.e., <code>\"\"</code>).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListPlacements": {
+            "main": "./lib/actions/ListPlacements.js",
+            "title": "Lists the placement(s) of a project.",
+            "description": "Lists the placement(s) of a project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListPlacements.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreatePlacement": {
+            "main": "./lib/actions/CreatePlacement.js",
+            "title": "Creates an empty placement.",
+            "description": "Creates an empty placement.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreatePlacement.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeletePlacement": {
+            "main": "./lib/actions/DeletePlacement.js",
+            "title": "<p>Deletes a placement. To delete a placement, it must not have any devices associated with it.</p> <note> <p>When you delete a placement, all associated data becomes irretrievable.</p> </note>",
+            "description": "<p>Deletes a placement. To delete a placement, it must not have any devices associated with it.</p> <note> <p>When you delete a placement, all associated data becomes irretrievable.</p> </note>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeletePlacement.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DescribePlacement": {
+            "main": "./lib/actions/DescribePlacement.js",
+            "title": "Describes a placement in a project.",
+            "description": "Describes a placement in a project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DescribePlacement.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdatePlacement": {
+            "main": "./lib/actions/UpdatePlacement.js",
+            "title": "Updates a placement with the given attributes. To clear an attribute, pass an empty value (i.e., \"\").",
+            "description": "Updates a placement with the given attributes. To clear an attribute, pass an empty value (i.e., \"\").",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdatePlacement.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetDevicesInPlacement": {
+            "main": "./lib/actions/GetDevicesInPlacement.js",
+            "title": "Returns an object enumerating the devices in a placement.",
+            "description": "Returns an object enumerating the devices in a placement.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetDevicesInPlacement.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DisassociateDeviceFromPlacement": {
+            "main": "./lib/actions/DisassociateDeviceFromPlacement.js",
+            "title": "Removes a physical device from a placement.",
+            "description": "Removes a physical device from a placement.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DisassociateDeviceFromPlacement.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AssociateDeviceWithPlacement": {
+            "main": "./lib/actions/AssociateDeviceWithPlacement.js",
+            "title": "Associates a physical device with a placement.",
+            "description": "Associates a physical device with a placement.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AssociateDeviceWithPlacement.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

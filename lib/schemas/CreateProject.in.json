@@ -1,0 +1,130 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "description": {
+                    "description": "An optional description for the project.",
+                    "maxLength": 500,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "placementTemplate": {
+                    "description": "The schema defining the placement to be created. A placement template defines placement default attributes and device templates. You cannot add or remove device templates after the project has been created. However, you can update <code>callbackOverrides</code> for the device templates using the <code>UpdateProject</code> API.",
+                    "properties": {
+                        "defaultAttributes": {
+                            "description": "The default attributes (key/value pairs) to be applied to all placements using this template.",
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "maxLength": 128,
+                                        "minLength": 1,
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "maxLength": 800,
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "deviceTemplates": {
+                            "description": "An object specifying the <a>DeviceTemplate</a> for all placements using this (<a>PlacementTemplate</a>) template.",
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "maxLength": 128,
+                                        "minLength": 1,
+                                        "pattern": "^[a-zA-Z0-9_-]+$",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "An object representing a device for a placement template (see <a>PlacementTemplate</a>).",
+                                        "properties": {
+                                            "callbackOverrides": {
+                                                "description": "An optional Lambda function to invoke instead of the default Lambda function provided by the placement template.",
+                                                "items": {
+                                                    "properties": {
+                                                        "key": {
+                                                            "maxLength": 128,
+                                                            "minLength": 1,
+                                                            "type": "string"
+                                                        },
+                                                        "value": {
+                                                            "maxLength": 200,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "deviceType": {
+                                                "description": "The device type, which currently must be <code>\"button\"</code>.",
+                                                "maxLength": 128,
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                },
+                "projectName": {
+                    "description": "The name of the project to create.",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "pattern": "^[0-9A-Za-z_-]+$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "projectName"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
