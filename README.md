@@ -5,11 +5,11 @@
 A generated **flow**ground connector for the AWS IoT 1-Click Projects Service API (version 2018-05-14).
 
 Generated from: https://api.apis.guru/v2/specs/amazonaws.com/iot1click-projects/2018-05-14/swagger.json<br/>
-Generated at: 2019-05-07T17:35:47+03:00
+Generated at: 2019-07-08T14:35:40+03:00
 
 ## API Description
 
-The AWS IoT 1-Click Project API Reference
+The AWS IoT 1-Click Project API Reference<br/>
 
 ## Authorization
 
@@ -17,7 +17,8 @@ Supported authorization schemes:
 - API Key
 ## Actions
 
-### Lists the AWS IoT 1-Click project(s) associated with your AWS account and region.
+### ListProjects
+> Lists the AWS IoT 1-Click project(s) associated with your AWS account and region.<br/>
 
 #### Input Parameters
 * `Action` - _required_
@@ -30,7 +31,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Creates an empty project with a placement template. A project contains zero or more placements that adhere to the placement template defined in the project.
+### CreateProject
+> Creates an empty project with a placement template. A project contains zero or more placements that adhere to the placement template defined in the project.<br/>
 
 #### Input Parameters
 * `Action` - _required_
@@ -43,7 +45,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### <p>Deletes a project. To delete a project, it must not have any placements associated with it.</p> <note> <p>When you delete a project, all associated data becomes irretrievable.</p> </note>
+### DeleteProject
+<blockquote><p>Deletes a project. To delete a project, it must not have any placements associated with it.</p> <note> <p>When you delete a project, all associated data becomes irretrievable.</p> </note></blockquote>
 
 #### Input Parameters
 * `projectName` - _required_
@@ -56,7 +59,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Returns an object describing a project.
+### DescribeProject
+> Returns an object describing a project.<br/>
 
 #### Input Parameters
 * `projectName` - _required_
@@ -69,7 +73,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Updates a project associated with your AWS account and region. With the exception of device template names, you can pass just the values that need to be updated because the update request will change only the values that are provided. To clear a value, pass the empty string (i.e., <code>""</code>).
+### UpdateProject
+> Updates a project associated with your AWS account and region. With the exception of device template names, you can pass just the values that need to be updated because the update request will change only the values that are provided. To clear a value, pass the empty string (i.e., <code>""</code>).<br/>
 
 #### Input Parameters
 * `projectName` - _required_
@@ -82,7 +87,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Lists the placement(s) of a project.
+### ListPlacements
+> Lists the placement(s) of a project.<br/>
 
 #### Input Parameters
 * `projectName` - _required_
@@ -95,7 +101,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Creates an empty placement.
+### CreatePlacement
+> Creates an empty placement.<br/>
 
 #### Input Parameters
 * `projectName` - _required_
@@ -108,7 +115,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### <p>Deletes a placement. To delete a placement, it must not have any devices associated with it.</p> <note> <p>When you delete a placement, all associated data becomes irretrievable.</p> </note>
+### DeletePlacement
+<blockquote><p>Deletes a placement. To delete a placement, it must not have any devices associated with it.</p> <note> <p>When you delete a placement, all associated data becomes irretrievable.</p> </note></blockquote>
 
 #### Input Parameters
 * `projectName` - _required_
@@ -121,7 +129,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Describes a placement in a project.
+### DescribePlacement
+> Describes a placement in a project.<br/>
 
 #### Input Parameters
 * `projectName` - _required_
@@ -134,7 +143,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Updates a placement with the given attributes. To clear an attribute, pass an empty value (i.e., "").
+### UpdatePlacement
+> Updates a placement with the given attributes. To clear an attribute, pass an empty value (i.e., "").<br/>
 
 #### Input Parameters
 * `projectName` - _required_
@@ -147,7 +157,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Returns an object enumerating the devices in a placement.
+### GetDevicesInPlacement
+> Returns an object enumerating the devices in a placement.<br/>
 
 #### Input Parameters
 * `projectName` - _required_
@@ -160,7 +171,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Removes a physical device from a placement.
+### DisassociateDeviceFromPlacement
+> Removes a physical device from a placement.<br/>
 
 #### Input Parameters
 * `projectName` - _required_
@@ -173,7 +185,8 @@ Supported authorization schemes:
 * `X-Amz-Signature` - _optional_
 * `X-Amz-SignedHeaders` - _optional_
 
-### Associates a physical device with a placement.
+### AssociateDeviceWithPlacement
+> Associates a physical device with a placement.<br/>
 
 #### Input Parameters
 * `projectName` - _required_
